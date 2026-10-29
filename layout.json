@@ -1,0 +1,4 @@
+{
+  "nav": "<nav aria-label=\"主要導覽\"><a href=\"index.html\" data-page=\"index\">首頁</a><a href=\"games.html\" data-page=\"games\">遊戲</a><a href=\"tools.html\" data-page=\"tools\">工具</a><a href=\"about.html\" data-page=\"about\">關於</a></nav>",
+  "footer": "<footer><span>KEEP EXPLORING.</span><a href=\"https://github.com/select1280\" target=\"_blank\" rel=\"noopener\">GitHub ↗</a><span>© <span id=\"year\"></span></span></footer>"
+}
