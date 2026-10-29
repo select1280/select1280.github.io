@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="select1280 的個人頁面，收錄作品與一些小工具。"
+    />
+    <title>航行日誌 · select1280</title>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="index.html"
+        >select1280<span class="brand-dot">.</span></a
+      ><!-- NAV -->
+    </header>
+    <main>
+      <section class="page-heading">
+        <span class="breadcrumb"><a href="index.html">首頁</a> / 航行日誌</span
+        ><span class="eyebrow">EXPLORATION LOG</span>
+        <h1>把探索，慢慢記下來。</h1>
+        <p>關於這個網站的實作與取捨。從小問題出發，留下可以回頭看的紀錄。</p>
+      </section>
+      <div class="journal-list">
+        <article class="journal-entry" id="toolbox">
+          <time datetime="2026-10-29">2026.10.29</time
+          ><span class="journal-tag">工具箱</span>
+          <h2>讓工具箱解決一些日常小事</h2>
+          <p>
+            新增 JSON
+            整理、時間戳轉換與文字差異比較。處理在瀏覽器內完成，輸入不會上傳；工具關閉後不保留輸入。JSON
+            使用標準解析器，遇到大整數時仍需留意精度。
+          </p>
+          <p>工具輸入只在瀏覽器中處理，不會上傳到伺服器。</p>
+          <a href="tools.html">打開工具箱 →</a>
+        </article>
+        <article class="journal-entry" id="native">
+          <time datetime="2026-10-29">2026.10.29</time
+          ><span class="journal-tag">原生 JavaScript</span>
+          <h2>先不引入框架，先整理職責</h2>
+          <p>
+            目前網站以靜態展示和獨立互動為主，因此保留原生技術。將共用儲存、遊戲、工具與海洋互動拆成
+            ES Modules，導覽與頁尾則由共用設定同步到各頁。
+          </p>
+          <p>
+            這樣減少了依賴，代價是元件邊界、事件清理與共用版面仍要自己維護。未來若跨頁狀態和資料需求增加，再重新評估框架。
+          </p>
+        </article>
+        <article class="journal-entry" id="wheel">
+          <time datetime="2026-10-29">2026.10.29</time
+          ><span class="journal-tag">互動設計</span>
+          <h2>轉盤的結果，應該能從盤面看出來</h2>
+          <p>
+            早期版本把箭頭放在旋轉盤面裡，且停止角度與抽選結果分開決定。現在改成固定指針，先決定結果，再將對應扇區轉到指針下方。抽選使用隨機數與拒絕取樣，避免直接取餘數的偏差。
+          </p>
+        </article>
+        <article class="journal-entry" id="static">
+          <time datetime="2026-10-29">2026.10.29</time
+          ><span class="journal-tag">網站起點</span>
+          <h2>用海洋，留下學習的空間</h2>
+          <p>
+            「學習像大海一樣無邊無際」成為視覺方向。波浪、小船、探索深度圖和鯨魚彩蛋呼應這個主題。深度圖是概念示意，探索航誌則只讀取此瀏覽器的真實操作紀錄，兩者清楚區分。
+          </p>
+        </article>
+      </div>
+      <section class="info-panel">
+        <h2>收藏的漂流瓶</h2>
+        <div id="saved-notes" class="saved-notes"></div>
+        <p class="hint">
+          收藏只存在這個瀏覽器。<a href="index.html">到首頁找今日漂流瓶 →</a>
+        </p>
+      </section>
+      <!-- FOOTER -->
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button id="close" aria-label="關閉">✕</button>
+      </div>
+      <div id="content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

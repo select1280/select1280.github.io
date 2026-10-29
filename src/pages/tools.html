@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="select1280 的個人頁面，收錄作品與一些小工具。"
+    />
+    <title>工具 · select1280</title>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="index.html"
+        >select1280<span class="brand-dot">.</span></a
+      ><!-- NAV -->
+    </header>
+    <main class="category-page">
+      <section class="page-heading">
+        <span class="breadcrumb"><a href="index.html">首頁</a> / 工具</span
+        ><span class="eyebrow">A LITTLE HELP</span>
+        <h1>小事，簡單處理。</h1>
+        <p>8 個日常與開發工具。分類找得到、打開就能用，資料在瀏覽器中處理。</p>
+      </section>
+      <div class="catalog-toolbar">
+        <span class="catalog-summary" role="status">顯示 8 / 8 項</span>
+        <div class="catalog-filters" role="group" aria-label="內容分類">
+          <button data-group="all" aria-pressed="true" class="active">
+            全部</button
+          ><button data-group="daily" aria-pressed="false" class="">日常</button
+          ><button data-group="dev" aria-pressed="false" class="">開發</button
+          ><button data-group="design" aria-pressed="false" class="">
+            配色
+          </button>
+        </div>
+      </div>
+      <div class="cards catalog-grid">
+        <button
+          class="card"
+          data-category="tool"
+          data-kind="daily"
+          data-open="wheel"
+        >
+          <div class="cover cover-pink">
+            <div class="wheel-mini">↗</div>
+            <span class="cover-tag">LET LUCK DECIDE.</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">03 / 小工具 · 選擇困難救星</span>
+            <h3>讓羅盤幫你選方向 <span>↗</span></h3>
+            <p>午餐吃什麼？下一站去哪？交給運氣。</p>
+            <span class="pill">海洋羅盤</span>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-category="tool"
+          data-kind="daily"
+          data-open="text"
+        >
+          <div class="cover cover-blue">
+            <span class="type-art">Aa<span>_</span></span
+            ><span class="cover-tag">MAKE WORDS FEEL BETTER.</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">04 / 小工具 · 日常好幫手</span>
+            <h3>文字也需要整理 <span>↗</span></h3>
+            <p>去空白、刪重複，讓文字乾乾淨淨。</p>
+            <span class="pill">文字整理</span>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-category="tool"
+          data-kind="dev"
+          data-open="json"
+        >
+          <div class="cover cover-blue">
+            <span class="tool-symbol">{ }</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">DEVELOPER TOOL</span>
+            <h3>JSON 整理與檢查 <span>↗</span></h3>
+            <p>格式化、壓縮與語法檢查。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-category="tool"
+          data-kind="dev"
+          data-open="timestamp"
+        >
+          <div class="cover cover-blue">
+            <span class="tool-symbol">00:00</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">DEVELOPER TOOL</span>
+            <h3>時間戳轉換 <span>↗</span></h3>
+            <p>秒、毫秒、UTC 與台北時間。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-category="tool"
+          data-kind="dev"
+          data-open="diff"
+        >
+          <div class="cover cover-blue">
+            <span class="tool-symbol">− / +</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">DEVELOPER TOOL</span>
+            <h3>文字差異比較 <span>↗</span></h3>
+            <p>逐行標示新增、刪除與未變更內容。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-open="url"
+          data-kind="dev"
+          data-category="tool"
+        >
+          <div class="cover cover-blue"><span class="tool-symbol">%</span></div>
+          <div class="card-body">
+            <span class="eyebrow">開發工具 · 本機處理</span
+            ><span class="new-tag">NEW</span>
+            <h3>URL 編解碼 <span>↗</span></h3>
+            <p>處理參數值的特殊字元，支援中文編解碼。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-open="uuid"
+          data-kind="dev"
+          data-category="tool"
+        >
+          <div class="cover cover-blue"><span class="tool-symbol">#</span></div>
+          <div class="card-body">
+            <span class="eyebrow">開發工具 · 1～100 組</span
+            ><span class="new-tag">NEW</span>
+            <h3>UUID 產生器 <span>↗</span></h3>
+            <p>一次產生多組 UUID v4，快速準備測試資料。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-open="color"
+          data-kind="design"
+          data-category="tool"
+        >
+          <div class="cover cover-blue">
+            <span class="tool-symbol">Aa</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">設計工具 · 即時預覽</span
+            ><span class="new-tag">NEW</span>
+            <h3>配色對比檢查 <span>↗</span></h3>
+            <p>試試文字與背景顏色，查看對比值與文字門檻。</p>
+          </div>
+        </button>
+      </div>
+      <section class="info-panel">
+        <h2>使用說明</h2>
+        <div class="help-grid">
+          <div>
+            <h3>海洋羅盤</h3>
+            <p>
+              每行輸入一個選項，支援 2 到 50
+              個不同選項。每個選項機率相同，相同文字會自動合併。選項會保存在此瀏覽器。
+            </p>
+          </div>
+          <div>
+            <h3>文字整理</h3>
+            <p>
+              支援修剪空白、去除空白行、移除重複行與合併空格。處理後可復原或複製，文字不會上傳到伺服器。
+            </p>
+          </div>
+        </div>
+        <p>想休息一下？<a href="games.html">去玩一局 →</a></p>
+      </section>
+      <!-- FOOTER -->
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button id="close" aria-label="關閉">✕</button>
+      </div>
+      <div id="content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

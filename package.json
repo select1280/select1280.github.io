@@ -1,0 +1,14 @@
+{
+  "name": "select1280-personal-site",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node scripts/check.mjs"
+  }
+}

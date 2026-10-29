@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="select1280 的個人頁面，收錄作品與一些小工具。"
+    />
+    <title>遊戲 · select1280</title>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="index.html"
+        >select1280<span class="brand-dot">.</span></a
+      ><!-- NAV -->
+    </header>
+    <main class="category-page">
+      <section class="page-heading">
+        <span class="breadcrumb"><a href="index.html">首頁</a> / 遊戲</span
+        ><span class="eyebrow">PLAY SOMETHING</span>
+        <h1>換個節奏，玩一下。</h1>
+        <p>4 個小遊戲，練反應、記憶與推理。無需登入，打開就能開始。</p>
+      </section>
+      <div class="catalog-toolbar">
+        <span class="catalog-summary" role="status">顯示 4 / 4 項</span>
+        <div class="catalog-filters" role="group" aria-label="內容分類">
+          <button data-group="all" aria-pressed="true" class="active">
+            全部</button
+          ><button data-group="speed" aria-pressed="false" class="">
+            反應與速度</button
+          ><button data-group="brain" aria-pressed="false" class="">
+            記憶與邏輯
+          </button>
+        </div>
+      </div>
+      <div class="cards catalog-grid">
+        <button
+          class="card"
+          data-category="game"
+          data-kind="speed"
+          data-open="reaction"
+        >
+          <div class="cover cover-yellow">
+            <span class="big-icon">ϟ</span
+            ><span class="cover-tag">READY, SET, GO.</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">01 / 小遊戲 · 約 30 秒</span>
+            <h3>你的反應有多快？ <span>↗</span></h3>
+            <p>等到綠燈亮起，挑戰你的極限反應。</p>
+            <span class="pill">反應力測試</span>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-category="game"
+          data-kind="brain"
+          data-open="memory"
+        >
+          <div class="cover cover-purple">
+            <div class="mini-grid"><i>✿</i><i>?</i><i>?</i><i>✿</i></div>
+            <span class="cover-tag">A LITTLE BRAIN GYM.</span>
+          </div>
+          <div class="card-body">
+            <span class="eyebrow">02 / 小遊戲 · 約 2 分鐘</span>
+            <h3>把記憶翻出來 <span>↗</span></h3>
+            <p>找到六組相同圖案，少一步也是進步。</p>
+            <span class="pill">記憶翻牌</span>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-open="aim"
+          data-kind="speed"
+          data-category="game"
+        >
+          <div class="cover cover-blue"><span class="tool-symbol">◎</span></div>
+          <div class="card-body">
+            <span class="eyebrow">速度挑戰 · 30 秒</span
+            ><span class="new-tag">NEW</span>
+            <h3>浮標點擊挑戰 <span>↗</span></h3>
+            <p>30 秒追著浮標走，看看命中數與準確率。</p>
+          </div>
+        </button>
+        <button
+          class="card"
+          data-open="guessing"
+          data-kind="brain"
+          data-category="game"
+        >
+          <div class="cover cover-blue"><span class="tool-symbol">?</span></div>
+          <div class="card-body">
+            <span class="eyebrow">邏輯挑戰 · 約 1 分鐘</span
+            ><span class="new-tag">NEW</span>
+            <h3>海底數字寶藏 <span>↗</span></h3>
+            <p>根據大小提示，在 7 次內找出藏起來的數字。</p>
+          </div>
+        </button>
+      </div>
+      <section class="info-panel">
+        <h2>開始之前</h2>
+        <div class="help-grid">
+          <div>
+            <h3>反應力測試</h3>
+            <p>
+              畫面變綠時點擊，或按空白鍵。五回合後看平均成績；太早點擊可以重試。裝置延遲會影響結果。
+            </p>
+          </div>
+          <div>
+            <h3>記憶翻牌</h3>
+            <p>
+              翻開兩張相同圖案即可配對。完成六組挑戰，看看用了多少步與時間。可以隨時重新開始。
+            </p>
+          </div>
+        </div>
+        <div class="help-grid">
+          <div>
+            <h3>浮標點擊挑戰</h3>
+            <p>
+              30
+              秒內點中浮標，空白點擊算未命中。可用鍵盤操作，但不同輸入方式不宜比較分數。切換視窗或關閉遊戲不會算完成。
+            </p>
+          </div>
+          <div>
+            <h3>海底數字寶藏</h3>
+            <p>
+              在 1～100 之間猜整數，每局 7
+              次機會。提示會告訴你答案更大或更小，可用縮小範圍的方式找到答案。
+            </p>
+          </div>
+        </div>
+        <p>想做點別的？<a href="tools.html">去看看工具 →</a></p>
+      </section>
+      <!-- FOOTER -->
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button id="close" aria-label="關閉">✕</button>
+      </div>
+      <div id="content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>

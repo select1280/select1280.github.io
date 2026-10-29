@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="select1280 的個人頁面，收錄作品與一些小工具。"
+    />
+    <title>關於 · select1280</title>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="index.html"
+        >select1280<span class="brand-dot">.</span></a
+      ><!-- NAV -->
+    </header>
+    <main>
+      <section class="page-heading">
+        <span class="breadcrumb"><a href="index.html">首頁</a> / 關於</span
+        ><span class="eyebrow">BEHIND THIS PAGE</span>
+        <h1>網路上的一個小角落。</h1>
+        <p>
+          學習像海洋，沒有明確的邊界。這裡記錄從好奇心出發的嘗試，讓想法變成可以體驗的作品。
+        </p>
+      </section>
+      <section class="about-grid">
+        <article>
+          <span class="num">01 / EXPLORE</span>
+          <h2>動手做，再慢慢改。</h2>
+          <p>
+            從一個小點子開始，變成可以打開、可以操作的作品。遊戲和工具是這裡最早的一批嘗試。
+          </p>
+        </article>
+        <article>
+          <span class="num">02 / KEEP IT SIMPLE</span>
+          <h2>打開就能使用。</h2>
+          <p>
+            目前的遊戲與工具都不需要帳號，也不必安裝。手機或電腦，用瀏覽器就能操作。
+          </p>
+        </article>
+        <article>
+          <span class="num">03 / KEEP GOING</span>
+          <h2>持續更新。</h2>
+          <p>
+            網站原始碼公開在
+            GitHub。功能與介面會逐步調整，有新的作品也會放在這裡。
+          </p>
+        </article>
+      </section>
+      <section class="info-panel">
+        <h2>資料與隱私</h2>
+        <p>
+          目前沒有啟用全站訪客追蹤。遊玩次數、工具使用次數與個人紀錄只儲存在此瀏覽器；清除網站資料就會重設。文字整理內容不會上傳，選擇轉盤的選項會保存在本機。
+        </p>
+        <p>
+          網頁由 GitHub Pages 提供，字型由 Google Fonts
+          載入，這些服務會收到一般的網路連線資訊。
+        </p>
+        <a
+          href="https://github.com/select1280/select1280.github.io"
+          target="_blank"
+          rel="noopener"
+          >查看網站原始碼 ↗</a
+        >
+      </section>
+      <section class="local-records">
+        <span class="eyebrow">YOUR EXPLORATION LOG</span>
+        <h2>你的探索航誌</h2>
+        <p>
+          只保留在這個瀏覽器，不是全站人數。換裝置或清除網站資料後不會保留。
+        </p>
+        <div class="local-chart" aria-label="此瀏覽器的遊戲與工具使用次數">
+          <div class="chart-bar">
+            <strong>0</strong><span>遊戲回合／開局</span>
+          </div>
+          <div class="chart-bar"><strong>0</strong><span>工具操作</span></div>
+          <div class="chart-bar"><strong>0</strong><span>遊戲完成</span></div>
+        </div>
+        <div class="best-record">
+          反應力個人最佳 <strong id="personal-best">尚未挑戰</strong>
+        </div>
+        <p class="chart-disclaimer">
+          反應測試每回合各計一次；其他遊戲每局各計一次。猜謎只有猜中才計完成。工具按一次處理或完成一次抽選計一次，數值用來回顧操作，不代表使用時長或學習成果。
+        </p>
+      </section>
+      <!-- FOOTER -->
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button id="close" aria-label="關閉">✕</button>
+      </div>
+      <div id="content"></div>
+    </dialog>
+    <div id="toast" role="status"></div>
+  </body>
+</html>
