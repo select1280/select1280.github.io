@@ -3,3 +3,67 @@
 .skip-link{position:fixed;top:10px;left:16px;z-index:10000;padding:12px 18px;background:#123e60;color:white;border-radius:5px;transform:translateY(-160%)}.skip-link:focus{transform:none}
 .daily-message{font-size:clamp(19px,3vw,24px);line-height:2.1;color:#245873;padding:12px 0 16px;border-bottom:1px solid #dcebf2;margin-bottom:22px}
 .weather-bar{max-width:1112px;margin:0 auto;padding:12px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #dcebf2;color:#52758b;font-size:12px;min-height:54px}.weather-primary,.weather-secondary{display:flex;align-items:center;gap:13px;flex-wrap:wrap}.weather-primary>label{display:inline;margin:0;font-size:11px;color:#6b899b}.weather-bar select{border:1px solid #d1e5ef;border-radius:6px;background:#fff;color:#275c79;padding:6px 22px 6px 9px;min-height:34px;font:inherit}.weather-icon{font-size:19px;color:#408dab;vertical-align:middle;margin-right:6px}.weather-secondary{font-size:10px;color:#6b899b}.weather-secondary a{text-decoration:underline;text-underline-offset:3px}.weather-bar button{padding:5px 10px;border:1px solid #cbe2ed;border-radius:5px;background:white;color:#437b98;font-size:11px;min-height:34px}.weather-status{min-width:130px}.weather-bar[data-state=error] .weather-status{color:#7c7e76}@media(max-width:1160px){.weather-bar{margin-left:24px;margin-right:24px}}@media(max-width:650px){.weather-bar{margin:0 20px;padding:10px 0;align-items:flex-start;gap:8px;flex-direction:column}.weather-primary{gap:10px}.weather-secondary{gap:12px}.weather-bar select{min-height:40px;font-size:16px}.weather-status{font-size:12px}.weather-primary>label{font-size:11px}}
+
+/* Restore the wide bottle dock; weather belongs to the hero, not the page header. */
+.hero-copy .weather-bar {
+  max-width: none;
+  min-height: 0;
+  margin: 26px 0 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12px;
+}
+.hero-copy .weather-primary { gap: 10px; }
+.hero-copy .weather-primary > label { display: none; }
+.hero-copy .weather-bar select {
+  padding: 5px 20px 5px 8px;
+  min-height: 34px;
+  border-color: #c5dfe9;
+  background: #ffffffa8;
+  font-size: 12px;
+}
+.hero-copy .weather-secondary { gap: 12px; font-size: 10px; color: #5e7e93; }
+.hero-copy .weather-status { min-width: 0; color: #376d8c; }
+.hero-copy .weather-icon { font-size: 17px; }
+.hero-copy .weather-bar button { min-height: 32px; }
+.bottle-dock {
+  margin: 0 0 44px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: linear-gradient(110deg, #e4f8fc, #fff8e9);
+  border: 1px solid #cfe9ee;
+  border-radius: 12px;
+}
+.bottle-dock h2 { font-size: 22px; font-weight: 500; margin: 10px 0 8px; }
+.bottle-dock p { font-size: 13px; margin: 0; color: #526f83; }
+.bottle-dock .bottle-open { padding: 13px 20px; background: #ffffffd9; }
+.bottle-dock .bottle-open:hover { background: white; border-color: #74b2c9; }
+.journal-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin: 38px 0 12px;
+  padding: 20px 0;
+  border-top: 1px solid #dcebf2;
+  color: #5a7d92;
+  font-size: 12px;
+}
+.journal-inline a { color: #286689; border-bottom: 1px solid #b8d5e4; padding-bottom: 4px; }
+@media (max-width: 650px) {
+  .hero-copy .weather-bar { margin: 22px 0 0; gap: 5px; }
+  .hero-copy .weather-bar select { min-height: 40px; font-size: 16px; }
+  .hero { padding-bottom: 55px; }
+  .bottle-dock { margin-bottom: 34px; padding: 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .bottle-dock h2 { font-size: 21px; line-height: 1.6; }
+  .bottle-dock .bottle-open { white-space: normal; }
+  .journal-inline { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 28px; }
+}
