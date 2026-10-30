@@ -1,9 +1,9 @@
 /* Scene weather stays outside the clipped sea illustration. */
 .ocean-visual { position: relative; min-width: 0; }
 .weather-widget { position: absolute; top: 12px; right: 0; z-index: 3; color: #315e76; font-size: 12px; }
-.weather-widget summary { display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 9px 14px; list-style: none; cursor: pointer; border: 1px solid #cfe2eb; border-radius: 24px; background: #f8fdfff2; box-shadow: 0 3px 14px #356b8910; transition: background .2s, border-color .2s; }
+.weather-widget summary { display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 9px 14px; list-style: none; cursor: pointer; border: 1px solid #7da8bd40; border-radius: 24px; background: #f8fdff4d; transition: background .2s, border-color .2s; }
 .weather-widget summary::-webkit-details-marker { display: none; }
-.weather-widget summary:is(:hover,:focus-visible) { background: #fff; border-color: #6ca9c3; }
+.weather-widget summary:is(:hover,:focus-visible) { background: #f8fdff8c; border-color: #6ca9c380; }
 .weather-widget summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .weather-chevron { transition: transform .2s; }
 .weather-widget[open] .weather-chevron { transform: rotate(180deg); }
@@ -22,21 +22,30 @@
 .journal-home-heading p { margin: 0; color: #526f83; font-size: 13px; line-height: 1.8; }
 .journal-home-heading>a { flex-shrink: 0; padding-bottom: 5px; border-bottom: 1px solid #a6c6d5; font-size: 12px; color: #286689; }
 .journal-preview-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
-.log-preview { min-width: 0; display: flex; flex-direction: column; padding: 23px; border: 1px solid #d8e7ed; border-radius: 10px; background: #fffefb; color: #244f66; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.log-preview { position: relative; isolation: isolate; overflow: hidden; min-width: 0; display: flex; flex-direction: column; padding: 23px; border: 1px solid #d8e7ed; border-radius: 10px; background: #fffefb; color: #244f66; transition: transform .3s, box-shadow .3s, border-color .3s; }
+.log-preview::before { content: ''; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 90% 0%,#9fe6ef55,transparent 65%); opacity: 0; transition: opacity .35s; }
+.log-preview::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg,#3e9fba,#a4e2e8,#efc88a); transform: scaleX(0); transform-origin: left; transition: transform .45s; }
 .log-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: #526f83; font-size: 10px; line-height: 1.6; }
 .log-meta time { font-variant-numeric: tabular-nums; letter-spacing: .3px; }
-.log-preview h3 { font-size: 18px; font-weight: 500; line-height: 1.75; margin: 18px 0 12px; letter-spacing: -.3px; }
+.log-preview h3 { font-size: 18px; font-weight: 500; line-height: 1.75; margin: 18px 0 12px; letter-spacing: -.3px; transition: color .25s, transform .3s; }
 .log-preview>p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; margin: 0 0 22px; color: #526f83; font-size: 12px; line-height: 1.9; }
 .log-route { margin-top: auto; height: 32px; color: #a3cbd9; }
 .log-route svg { display: block; width: 100%; height: 30px; overflow: visible; }
 .log-route path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-dasharray: 4 6; transition: stroke .25s; }
-.log-route circle { fill: #f9fcff; stroke: currentColor; stroke-width: 1.5; }
+.log-route circle { fill: #f9fcff; stroke: currentColor; stroke-width: 1.5; transform-box: fill-box; transform-origin: center; transition: fill .3s, transform .3s; }
 .log-read { display: flex; justify-content: space-between; margin-top: 16px; font-size: 11px; color: #3a7290; }
-.log-read>span { transition: transform .25s; }
-.log-preview:is(:hover,:focus-visible) { transform: translateY(-5px); border-color: #79afc5; box-shadow: 0 12px 24px #386b8512; }
+.log-read { align-items: center; }
+.log-read>span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; transition: transform .3s, background .3s, color .3s; }
+.log-preview:is(:hover,:focus-visible) { transform: translateY(-7px); border-color: #79afc5; box-shadow: 0 14px 30px #386b8520; }
+.log-preview:is(:hover,:focus-visible)::before { opacity: 1; }
+.log-preview:is(:hover,:focus-visible)::after { transform: scaleX(1); }
+.log-preview:is(:hover,:focus-visible) h3 { color: #147496; transform: translateX(3px); }
 .log-preview:is(:hover,:focus-visible) .log-route { color: #3b92ae; }
 .log-preview:is(:hover,:focus-visible) .log-route path { animation: log-sailing 2.5s linear infinite; }
-.log-preview:is(:hover,:focus-visible) .log-read>span { transform: translate(3px,-3px); }
+.log-preview:is(:hover,:focus-visible) .log-route circle:last-child { fill: #63bfd1; transform: scale(1.5); }
+.log-preview:is(:hover,:focus-visible) .log-read>span { transform: translate(3px,-3px); background: #dff3f7; color: #136c8b; }
+.journal-home-heading>a { transition: color .2s, border-color .2s; }
+.journal-home-heading>a:is(:hover,:focus-visible) { color: #1080a0; border-color: #1080a0; }
 @keyframes log-sailing { to { stroke-dashoffset: -40; } }
 @media (max-width: 950px) {
   .journal-home { padding: 25px; }
@@ -59,6 +68,6 @@
   .log-preview>p { -webkit-line-clamp: 2; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .weather-widget *, .log-preview, .log-preview * { animation: none !important; transition: none !important; }
-  .log-preview:is(:hover,:focus-visible), .log-preview:is(:hover,:focus-visible) .log-read>span { transform: none; }
+  .weather-widget *, .log-preview, .log-preview *, .log-preview::before, .log-preview::after, .journal-home-heading>a { animation: none !important; transition: none !important; }
+  .log-preview:is(:hover,:focus-visible), .log-preview:is(:hover,:focus-visible) h3, .log-preview:is(:hover,:focus-visible) .log-read>span, .log-preview:is(:hover,:focus-visible) .log-route circle { transform: none; }
 }
