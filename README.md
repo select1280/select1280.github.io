@@ -28,6 +28,8 @@ npm run check
 
 導覽／頁尾各有一個來源，由 build 同步到所有頁面。只修改 src，不修改 dist。推送 main 會在測試、建置與連結檢查通過後部署；也可手動執行工作流程。功能開發請使用分支，本機 commit 不會發布。
 
+首頁日誌預覽由 scripts/journal-preview.mjs 讀取 src/pages/journal.html 的前三篇文章產生；新增日誌請放在頁面最前面，保留標題、日期與文章 ID。天氣元件位於 src/shared/weather.html，互動在 src/features/weather，海洋天氣與日誌預覽的樣式集中在 src/styles/atmosphere.css。
+
 提交訊息使用中文，例如「新增：浮標挑戰與開發工具箱」或「修正：羅盤停止位置」。
 
 個人紀錄與收藏保存在 localStorage，沒有全站訪客追蹤。工具輸入不會上傳。字型從 Google Fonts 載入。

@@ -1,12 +1,13 @@
-<aside id="weather-bar" class="weather-bar" aria-label="城市天氣">
-  <div class="weather-primary">
-    <label for="weather-city">今日天氣</label>
+<details id="weather-bar" class="weather-widget">
+  <summary aria-label="展開城市天氣設定">
+    <span id="weather-compact">◌ 台北 · 天氣</span><span class="weather-chevron" aria-hidden="true">⌄</span>
+  </summary>
+  <div class="weather-panel">
+    <label for="weather-city">看看哪裡的天氣？</label>
     <select id="weather-city" aria-label="選擇天氣城市"></select>
-    <span class="weather-status" role="status" aria-live="polite">天氣載入中…</span>
-    <button type="button" hidden>重試</button>
-  </div>
-  <div class="weather-secondary">
+    <p class="weather-status" role="status" aria-live="polite">天氣載入中…</p>
     <time></time>
-    <a href="https://open-meteo.com/" target="_blank" rel="noopener" title="Open-Meteo 天氣模式資料，依城市中心座標查詢，非即時測站觀測">Open-Meteo ↗</a>
+    <button type="button" hidden>重新取得</button>
+    <div class="weather-credit"><a href="https://open-meteo.com/" target="_blank" rel="noopener">天氣來源：Open-Meteo ↗</a><span>城市中心模式資料，非測站即時觀測。</span></div>
   </div>
-</aside>
+</details>

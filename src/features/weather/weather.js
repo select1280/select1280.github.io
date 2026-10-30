@@ -70,6 +70,15 @@ export function initWeather() {
   if (!bar) return;
   const select = bar.querySelector("select"), status = bar.querySelector("[role=status]");
   const retry = bar.querySelector("button"), stamp = bar.querySelector("time");
+  const compact = bar.querySelector('#weather-compact'), trigger = bar.querySelector('summary');
+  function compactLabel(text) {
+    compact.textContent = text;
+    trigger.setAttribute('aria-label',text+'，展開天氣詳情與城市設定');
+  }
+  bar.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&bar.open){bar.open=false;trigger.focus();event.stopPropagation();}
+  });
+  document.addEventListener('pointerdown',event=>{if(bar.open&&!bar.contains(event.target))bar.open=false;});
   for (const city of cities) {
     const option = document.createElement("option");
     option.value = city.id; option.textContent = city.name; select.append(option);
@@ -91,6 +100,8 @@ export function initWeather() {
       hour: "2-digit", minute: "2-digit", hour12: false,
     }).format(date);
     bar.dataset.state = stale ? "stale" : "ready";
+    const city = cities.find(item=>item.id===select.value);
+    compactLabel(description.icon+' '+city.name+' · '+Math.round(data.temperature)+'°C'+(stale?'（舊資料）':''));
   }
   async function load() {
     const ticket = ++sequence;
@@ -100,6 +111,7 @@ export function initWeather() {
     store.set("weather-city", city.id);
     const key = "weather-v1-" + city.id, cached = store.get(key, null), now = Date.now();
     retry.hidden = true; stamp.textContent = ""; stamp.removeAttribute("datetime");
+    compactLabel('◌ '+city.name+' · 天氣');
     if (cacheUsable(cached, now)) { display(cached.data); return; }
     status.textContent = "天氣載入中…"; bar.dataset.state = "loading";
     const timeout = setTimeout(() => requestController.abort(), 8000);
@@ -112,7 +124,7 @@ export function initWeather() {
     } catch {
       if (ticket !== sequence) return;
       if (cacheUsable(cached, Date.now(), STALE_LIMIT)) display(cached.data, true);
-      else { status.textContent = "暫時無法取得天氣"; bar.dataset.state = "error"; }
+      else { status.textContent = "暫時無法取得天氣，請稍後重試。"; bar.dataset.state = "error"; compactLabel('◌ '+city.name+' · 暫無資料'); }
       retry.hidden = false;
     } finally { clearTimeout(timeout); }
   }

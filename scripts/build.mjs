@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { journalPreview } from './journal-preview.mjs';
 export const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -19,13 +20,15 @@ export async function build() {
   await fs.mkdir(path.join(dist, "assets"), { recursive: true });
   const baseStyles = await fs.readFile(path.join(root,'src/styles/site.css'),'utf8');
   const refinement = await fs.readFile(path.join(root,'src/styles/refinement.css'),'utf8');
-  await fs.writeFile(path.join(dist,'assets/site.css'),baseStyles+'\n'+refinement);
+  const atmosphere = await fs.readFile(path.join(root,'src/styles/atmosphere.css'),'utf8');
+  await fs.writeFile(path.join(dist,'assets/site.css'),[baseStyles,refinement,atmosphere].join('\n'));
   const nav = await fs.readFile(path.join(root, "src/shared/nav.html"), "utf8"),
     footer = await fs.readFile(
       path.join(root, "src/shared/footer.html"),
       "utf8",
     );
   const weather = await fs.readFile(path.join(root, 'src/shared/weather.html'), 'utf8');
+  const journal = journalPreview(await fs.readFile(path.join(root,'src/pages/journal.html'),'utf8'));
   for (const name of ["index", "games", "tools", "journal", "about"]) {
     let html = await fs.readFile(
       path.join(root, "src/pages", name + ".html"),
@@ -40,7 +43,8 @@ export async function build() {
         ),
       )
       .replace("<!-- FOOTER -->", footer)
-      .replace("<!-- WEATHER -->", weather);
+      .replace("<!-- WEATHER -->", weather)
+      .replace("<!-- JOURNAL PREVIEW -->", journal);
     await fs.writeFile(path.join(dist, name + ".html"), html);
   }
   console.log("已建置五個分頁至 dist/");
