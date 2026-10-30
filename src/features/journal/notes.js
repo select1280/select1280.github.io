@@ -1,5 +1,8 @@
 import { $, store, lifecycle } from "../../shared/core.js";
-export const notes = [
+import { messages as notes } from "./messages.js";
+export { notes };
+// Preserve previously saved technical bottles without including them in daily messages.
+const archivedNotes = [
   {
     id: "small-start",
     title: "從小問題開始",
@@ -52,10 +55,8 @@ export function taipeiDay(date = new Date()) {
   }).format(date);
 }
 export function noteIndex(day) {
-  return (
-    Array.from(day).reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 0) %
-    notes.length
-  );
+  const ordinal = Math.floor(Date.parse(day + "T00:00:00Z") / 86400000);
+  return ((ordinal % notes.length) + notes.length) % notes.length;
 }
 export function bottle() {
   lifecycle.cleanup = () => {};
@@ -63,13 +64,14 @@ export function bottle() {
     note = notes[noteIndex(day)],
     saved = store.get("saved-notes", []);
   $("#content").innerHTML =
-    '<span class="eyebrow">今日漂流瓶 · 台北時間</span><h3 id="bottle-title"></h3><p id="bottle-copy"></p><div class="actions"><button class="primary" id="save-note"></button><a class="secondary" id="bottle-link"></a></div><p class="hint">每日輪換一則，共 6 則；收藏僅存於此瀏覽器。</p>';
+    '<span class="eyebrow" id="bottle-date"></span><h3 id="bottle-title"></h3><p id="bottle-copy" class="daily-message"></p><div class="actions"><button class="primary" id="save-note"></button><a class="secondary" id="bottle-link"></a></div><p class="hint">網站原創小語，每天依台北日期輪換一句，共 30 句。收藏僅存於此瀏覽器。</p>';
+  $("#bottle-date").textContent = '每日一句 · ' + day + '（台北）';
   $("#bottle-title").textContent = note.title;
   $("#bottle-copy").textContent = note.body;
   $("#bottle-link").href = note.link;
   $("#bottle-link").textContent = note.label + " →";
   const button = $("#save-note");
-  button.textContent = saved.includes(note.id) ? "已收藏" : "收藏這則筆記";
+  button.textContent = saved.includes(note.id) ? "已收藏" : "收藏這句話";
   button.onclick = () => {
     const ids = store.get("saved-notes", []);
     if (!ids.includes(note.id)) ids.push(note.id);
@@ -81,9 +83,9 @@ export function renderSavedNotes() {
   const target = $("#saved-notes");
   if (!target) return;
   const saved = store.get("saved-notes", []);
-  const matches = notes.filter((n) => saved.includes(n.id));
+  const matches = [...notes,...archivedNotes].filter((n) => saved.includes(n.id));
   if (!matches.length) {
-    target.textContent = "尚未收藏。到首頁打開今日漂流瓶，可以收藏喜歡的筆記。";
+    target.textContent = "尚未收藏。到首頁打開今日漂流瓶，留下一句喜歡的話。";
     return;
   }
   target.replaceChildren();

@@ -21,6 +21,13 @@ assert.throws(() => tools.parseTimestamp("not a number", "seconds"));
 assert.equal(journal.taipeiDay(new Date("2026-10-29T15:59:59Z")), "2026-10-29");
 assert.equal(journal.taipeiDay(new Date("2026-10-29T16:00:00Z")), "2026-10-30");
 assert.equal(journal.noteIndex("2026-10-29"), journal.noteIndex("2026-10-29"));
+// Every day in one cycle gets a different message, including month boundaries.
+const dailyIndices = Array.from({length:30},(_,i)=>journal.noteIndex(
+  new Date(Date.UTC(2026,9,20+i)).toISOString().slice(0,10)
+));
+assert.equal(new Set(dailyIndices).size,30);
+assert.equal(journal.notes.length,30);
+assert.equal(new Set(journal.notes.map(n=>n.id)).size,30);
 for (const [before, after] of [
   ["a\nb", "a\nc"],
   ["", "new"],
