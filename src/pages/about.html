@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script type="module" src="src/main.js"></script>
   </head>
-  <body>
+  <body><a class="skip-link" href="#main-content">跳至主要內容</a>
     <header>
       <a class="brand" href="index.html"
         >select1280<span class="brand-dot">.</span></a
       ><!-- NAV -->
     </header>
-    <main>
+    <main id="main-content" tabindex="-1">
       <section class="page-heading">
         <span class="breadcrumb"><a href="index.html">首頁</a> / 關於</span
         ><span class="eyebrow">BEHIND THIS PAGE</span>
@@ -66,6 +66,56 @@
           >查看網站原始碼 ↗</a
         >
       </section>
+      <section class="ocean-intro">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">BELOW THE SURFACE</span>
+            <h2>每深一點，都有新發現。</h2>
+          </div>
+        </div>
+        <div class="ocean-explore">
+          <div
+            class="depth-chart"
+            data-depth="surface"
+            role="img"
+            aria-label="海面、海中與深海的探索示意圖"
+          >
+            <div class="depth-lines"></div>
+            <svg
+              viewBox="0 0 500 270"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M60 35 C130 10 160 100 215 65 S245 155 300 140 S310 220 380 225"
+                fill="none"
+                stroke="#dcf8ff"
+                stroke-width="2"
+                stroke-dasharray="5 7"
+              /></svg
+            ><span class="depth-dot"></span>
+            <div class="axis">
+              <span>SURFACE</span><span>EXPLORE</span><span>UNKNOWN</span>
+            </div>
+          </div>
+          <div class="explore-copy">
+            <span class="eyebrow">THE LEARNING OCEAN</span>
+            <h3 id="depth-title">海面 · 好奇的起點</h3>
+            <p id="depth-copy" aria-live="polite">
+              先看見，再問為什麼。每一個問題都可以是新的航線。
+            </p>
+            <div class="depth-controls" role="group" aria-label="切換探索深度">
+              <button class="active" data-layer="surface" aria-pressed="true">
+                海面</button
+              ><button data-layer="middle" aria-pressed="false">海中</button
+              ><button data-layer="deep" aria-pressed="false">深海</button>
+            </div>
+            <div class="chart-disclaimer">
+              互動概念圖，用來探索學習的不同階段，不代表真實學習數據。
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="local-records">
         <span class="eyebrow">YOUR EXPLORATION LOG</span>
         <h2>你的探索航誌</h2>
@@ -91,7 +141,7 @@
     <dialog id="modal" aria-labelledby="modal-title">
       <div class="modal-header">
         <h2 id="modal-title"></h2>
-        <button id="close" aria-label="關閉">✕</button>
+        <span class="workspace-note">Esc 關閉</span><button id="close" aria-label="關閉">✕</button>
       </div>
       <div id="content"></div>
     </dialog>

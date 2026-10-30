@@ -17,10 +17,9 @@ export async function build() {
   });
   await fs.cp(path.join(root, "public"), dist, { recursive: true });
   await fs.mkdir(path.join(dist, "assets"), { recursive: true });
-  await fs.copyFile(
-    path.join(root, "src/styles/site.css"),
-    path.join(dist, "assets/site.css"),
-  );
+  const baseStyles = await fs.readFile(path.join(root,'src/styles/site.css'),'utf8');
+  const refinement = await fs.readFile(path.join(root,'src/styles/refinement.css'),'utf8');
+  await fs.writeFile(path.join(dist,'assets/site.css'),baseStyles+'\n'+refinement);
   const nav = await fs.readFile(path.join(root, "src/shared/nav.html"), "utf8"),
     footer = await fs.readFile(
       path.join(root, "src/shared/footer.html"),

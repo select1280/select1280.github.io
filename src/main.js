@@ -9,16 +9,18 @@ import {
 import { aim, guessing } from "./features/games/challenges.js";
 import { urlTool, uuidTool, colorTool } from "./features/tools/utilities.js";
 import { bottle, renderSavedNotes } from "./features/journal/notes.js";
+import { catalog, refineCards } from "./shared/catalog.js";
 import "./features/ocean/effects.js";
 import "./features/ocean/scene.js";
 renderCounts();
+refineCards();
 $("#year").textContent = new Date().getFullYear();
 document.querySelectorAll("[data-filter]").forEach(
   (b) =>
     (b.onclick = () => {
       document
         .querySelectorAll("[data-filter]")
-        .forEach((x) => x.classList.toggle("active", x === b));
+        .forEach((x) => { x.classList.toggle("active", x === b); x.setAttribute("aria-pressed", String(x === b)); });
       document
         .querySelectorAll(".card")
         .forEach(
@@ -44,11 +46,16 @@ const titles = {
   uuid: "UUID 產生器",
   color: "配色對比檢查",
 };
+let dialogOpener = null;
+const workspaceTools = new Set(['json','diff','text','url','uuid','timestamp']);
 document.querySelectorAll("[data-open]").forEach(
   (b) =>
     (b.onclick = () => {
       lifecycle.cleanup();
-      $("#modal-title").textContent = titles[b.dataset.open];
+      dialogOpener = b;
+      $("#modal-title").textContent = catalog[b.dataset.open]?.title || titles[b.dataset.open];
+      $("#modal").classList.toggle('workspace',workspaceTools.has(b.dataset.open));
+      document.body.classList.add('dialog-open');
       $("#modal").showModal();
       ({
         reaction,
@@ -65,10 +72,13 @@ document.querySelectorAll("[data-open]").forEach(
         uuid: uuidTool,
         color: colorTool,
       })[b.dataset.open]();
+      $("#modal").scrollTop = 0;
+      const firstInput = $("#content").querySelector('textarea:not([readonly]),input:not([readonly])');
+      (firstInput || $("#close")).focus({preventScroll:true});
     }),
 );
 $("#close").onclick = () => $("#modal").close();
-$("#modal").addEventListener("close", () => lifecycle.cleanup());
+$("#modal").addEventListener("close", () => { lifecycle.cleanup(); document.body.classList.remove('dialog-open'); dialogOpener?.focus({preventScroll:true}); });
 
 addEventListener("pagehide", () => lifecycle.cleanup());
 renderSavedNotes();

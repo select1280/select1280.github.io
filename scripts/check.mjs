@@ -16,11 +16,19 @@ for (const file of walk(dist)) {
   if (file.endsWith(".html")) {
     pages++;
     if (content.includes("<!-- NAV -->")) throw Error("未填入共用導覽");
-    for (const [, link] of content.matchAll(/(?:href|src)="([^"#]+)"/g)) {
+    const ids = [...content.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
+    if (new Set(ids).size !== ids.length) throw Error('重複的元素 ID：'+file);
+    for (const [, link] of content.matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (/^(https?:|mailto:|data:)/.test(link)) continue;
       const name = link.split(/[?#]/)[0];
       if (name && !fs.existsSync(path.resolve(path.dirname(file), name)))
         throw Error("連結不存在：" + link + " in " + file);
+      const fragment = link.split('#')[1];
+      const target = name ? path.resolve(path.dirname(file),name) : file;
+      if (fragment && target.endsWith('.html')) {
+        const destination = target===file?content:fs.readFileSync(target,'utf8');
+        if (![...destination.matchAll(/\bid="([^"]+)"/g)].some(m=>m[1]===decodeURIComponent(fragment))) throw Error('錨點不存在：'+link);
+      }
     }
   }
   if (file.endsWith(".js")) {

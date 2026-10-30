@@ -11,13 +11,13 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script type="module" src="src/main.js"></script>
   </head>
-  <body>
+  <body><a class="skip-link" href="#main-content">跳至主要內容</a>
     <header>
       <a class="brand" href="index.html"
         >select1280<span class="brand-dot">.</span></a
       ><!-- NAV -->
     </header>
-    <main class="category-page">
+    <main class="category-page" id="main-content" tabindex="-1">
       <section class="page-heading">
         <span class="breadcrumb"><a href="index.html">首頁</a> / 遊戲</span
         ><span class="eyebrow">PLAY SOMETHING</span>
@@ -139,7 +139,7 @@
     <dialog id="modal" aria-labelledby="modal-title">
       <div class="modal-header">
         <h2 id="modal-title"></h2>
-        <button id="close" aria-label="關閉">✕</button>
+        <span class="workspace-note">Esc 關閉</span><button id="close" aria-label="關閉">✕</button>
       </div>
       <div id="content"></div>
     </dialog>
