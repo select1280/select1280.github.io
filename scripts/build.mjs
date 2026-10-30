@@ -25,6 +25,7 @@ export async function build() {
       path.join(root, "src/shared/footer.html"),
       "utf8",
     );
+  const weather = await fs.readFile(path.join(root, 'src/shared/weather.html'), 'utf8');
   for (const name of ["index", "games", "tools", "journal", "about"]) {
     let html = await fs.readFile(
       path.join(root, "src/pages", name + ".html"),
@@ -38,7 +39,8 @@ export async function build() {
           `data-page="${name}" aria-current="page"`,
         ),
       )
-      .replace("<!-- FOOTER -->", footer);
+      .replace("<!-- FOOTER -->", footer)
+      .replace("<!-- WEATHER -->", weather);
     await fs.writeFile(path.join(dist, name + ".html"), html);
   }
   console.log("已建置五個分頁至 dist/");

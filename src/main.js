@@ -10,10 +10,12 @@ import { aim, guessing } from "./features/games/challenges.js";
 import { urlTool, uuidTool, colorTool } from "./features/tools/utilities.js";
 import { bottle, renderSavedNotes } from "./features/journal/notes.js";
 import { catalog, refineCards } from "./shared/catalog.js";
+import { initWeather } from "./features/weather/weather.js";
 import "./features/ocean/effects.js";
 import "./features/ocean/scene.js";
 renderCounts();
 refineCards();
+initWeather();
 $("#year").textContent = new Date().getFullYear();
 document.querySelectorAll("[data-filter]").forEach(
   (b) =>
