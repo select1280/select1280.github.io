@@ -1,6 +1,6 @@
 /* Scene weather stays outside the clipped sea illustration. */
-.ocean-visual { position: relative; min-width: 0; }
-.weather-widget { position: absolute; top: 12px; right: 0; z-index: 3; color: #315e76; font-size: 12px; }
+.ocean-visual { position: relative; min-width: 0; padding-top: 58px; }
+.weather-widget { position: absolute; top: 0; right: 0; z-index: 3; color: #315e76; font-size: 12px; }
 .weather-widget summary { display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 9px 14px; list-style: none; cursor: pointer; border: 1px solid #cfe2eb; border-radius: 24px; background: #f8fdfff2; box-shadow: 0 3px 14px #356b8910; transition: background .2s, border-color .2s; }
 .weather-widget summary::-webkit-details-marker { display: none; }
 .weather-widget summary:is(:hover,:focus-visible) { background: #fff; border-color: #6ca9c3; }

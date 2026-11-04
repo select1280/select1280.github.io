@@ -1,0 +1,18 @@
+<div class="atlas-toolbar">
+  <div id="atlas-controls" class="atlas-zones" role="group" aria-label="選擇探索海域">
+    <button type="button" data-zone="surface" data-label="海面" aria-pressed="true">海面</button>
+    <button type="button" data-zone="reef" data-label="淺海" aria-pressed="false" disabled>淺海 🔒</button>
+    <button type="button" data-zone="deep" data-label="深海" aria-pressed="false" disabled>深海 🔒</button>
+  </div>
+  <button type="button" id="atlas-progress" aria-haspopup="dialog">海洋圖鑑 · 0／12</button>
+</div>
+<p id="atlas-hint" class="atlas-hint">發現 3 種，解鎖淺海</p>
+<dialog id="atlas-dialog" class="atlas-dialog" aria-labelledby="atlas-title" aria-describedby="atlas-summary">
+  <div class="atlas-header"><div><span class="eyebrow">OCEAN FIELD NOTES</span><h2 id="atlas-title">海洋探索圖鑑</h2></div><button type="button" id="atlas-close" aria-label="關閉海洋圖鑑">✕</button></div>
+  <div class="atlas-content">
+    <p id="atlas-summary"></p><p id="atlas-storage" role="status"></p>
+    <div id="atlas-reward" hidden><h3>✦ 海洋探索家</h3><p>十二次不同的相遇，換來一片專屬星海。</p><button type="button" id="atlas-theme" aria-pressed="false">切換專屬星海</button></div>
+    <div id="atlas-entries"></div>
+    <p class="atlas-footnote">連續三次重複遇見後，下一次必定發現此海域尚未收藏的事件。再次欣賞不增加收藏次數。</p>
+  </div>
+</dialog>

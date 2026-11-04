@@ -1,24 +1,6 @@
 import { $, store } from "../../shared/core.js";
-const seaButton = document.querySelector("#sea-surprise");
-if (seaButton) {
-  let clicks = 0;
-  seaButton.onclick = () => {
-    clicks++;
-    const ship = document.querySelector(".little-boat");
-    ship.classList.remove("sail");
-    void ship.getBoundingClientRect();
-    ship.classList.add("sail");
-    document.querySelector("#sea-message").textContent = [
-      "出航！今天會發現什麼？",
-      "海面之下，還有更多未知。",
-      "恭喜發現一隻躲起來的鯨魚！",
-    ][Math.min(clicks - 1, 2)];
-    if (clicks >= 3) {
-      document.querySelector(".whale").classList.add("found");
-      document.querySelector(".ocean-scene").classList.add("whale-found");
-    }
-  };
-}
+import { initAtlas } from './atlas.js';
+initAtlas();
 document.querySelectorAll("[data-layer]").forEach(
   (button) =>
     (button.onclick = () => {

@@ -33,3 +33,5 @@ npm run check
 提交訊息使用中文，例如「新增：浮標挑戰與開發工具箱」或「修正：羅盤停止位置」。
 
 個人紀錄與收藏保存在 localStorage，沒有全站訪客追蹤。工具輸入不會上傳。字型從 Google Fonts 載入。
+
+海洋探索圖鑑分成 atlas-data.js（事件、解鎖與抽取規則）、atlas.js（互動與儲存）、atlas.html（介面）及 ocean-atlas.css（插圖動畫與響應版面）。新增事件需同時檢查區域門檻、收藏總數及測試。圖鑑使用獨立的 littlebreak:ocean-atlas-v1 儲存鍵，不影響舊遊戲紀錄或漂流瓶收藏。
