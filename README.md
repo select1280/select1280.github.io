@@ -26,6 +26,8 @@ npm run check
 
 ## 修改與發布
 
+定期維護與每次發布的檢查方式見 [維護約定](docs/maintenance.md)：每次發布檢查、每月一次健康檢查、每季一次技術與內容檢視。
+
 導覽／頁尾各有一個來源，由 build 同步到所有頁面。只修改 src，不修改 dist。推送 main 會在測試、建置與連結檢查通過後部署；也可手動執行工作流程。功能開發請使用分支，本機 commit 不會發布。
 
 首頁日誌預覽由 scripts/journal-preview.mjs 讀取 src/pages/journal.html 的前三篇文章產生；新增日誌請放在頁面最前面，保留標題、日期與文章 ID。天氣元件位於 src/shared/weather.html，互動在 src/features/weather，海洋天氣與日誌預覽的樣式集中在 src/styles/atmosphere.css。
